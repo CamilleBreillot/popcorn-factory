@@ -2,6 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 .card-trip > img {
@@ -36,4 +37,12 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.delete-bookmark {
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  width: 40px;
+  color: purple;
 }
