@@ -1,0 +1,48 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);">
+  <div class="container">
+    <h1>The Popcorn Factory</h1>
+    <p>Save all your movies in one place</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="header-index-lists">
+    <h3>My lists</h3>
+  </div>
+
+  <div class="section-grid-lists">
+    <% @lists.each do |list| %>
+    <%= link_to list_path(list) do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <%= list.name %>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="section-bottom-button">
+    <%= link_to "Create a new list", new_list_path, class: "btn btn-ghost", type: "button", "data-toggle": "modal", "data-target": "#exampleModal"%>
+  </div>
+
+<%# -----Modal------ %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create a new list</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(@list) do |f| %>
+          <%= f.input :name %>
+          <div class="modal-footer">
+          <%= f.submit "Create list", class:"btn btn-dark rounded" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
