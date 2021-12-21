@@ -7,6 +7,10 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
+    @movies = Movie.all
+    if params[:query].present?
+      @movies = @movies.where('title ILIKE ?', "%#{params[:query]}%")
+    end
   end
 
   def new
