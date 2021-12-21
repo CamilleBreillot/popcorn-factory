@@ -7,9 +7,14 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
-    @movies = Movie.all
+    @movies = Movie.all.limit(10)
     if params[:query].present?
       @movies = @movies.where('title ILIKE ?', "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'lists/movie-list', locals: { movies: @movies }, formats: [:html] }
     end
   end
 
