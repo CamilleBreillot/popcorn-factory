@@ -1,0 +1,18 @@
+<div class="list-movies" data-search-movies-target="list">
+  <% if @movies.length > 0 %>
+    <% @movies.each do |movie| %>
+      <div class="movie-card">
+        <%= image_tag movie.poster_url %>
+
+        <div class="movie-infos">
+          <h2 title="<%= movie.title %>">
+            <%= movie.title %>
+          </h2>
+          <i class="fas fa-pen fa-xs ml-2"></i>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No movies found</p>
+  <% end %>
+</div>
