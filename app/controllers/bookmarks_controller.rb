@@ -8,6 +8,7 @@ class BookmarksController < ApplicationController
     @list = List.find(params[:list_id])
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
+    @movies = Movie.all.limit(10)
     if @bookmark.save
       redirect_to list_path(@list)
     else

@@ -41,8 +41,12 @@
 
 .delete-bookmark {
   position: absolute;
-  right: 18px;
-  top: 20px;
+  right: -1px;
+  top: 16px;
   width: 40px;
   color: purple;
+
+  a {
+    color: white;
+  }
 }
