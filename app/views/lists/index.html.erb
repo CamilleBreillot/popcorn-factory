@@ -13,7 +13,7 @@
   <div class="section-grid-lists">
     <% @lists.each do |list| %>
     <%= link_to list_path(list) do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key %>)">
         <%= list.name %>
       </div>
     <% end %>
@@ -21,10 +21,31 @@
   </div>
 
   <div class="section-bottom-button">
-    <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModalindex">
       Create a new list 🍿
     </button>
   </div>
 
-
+<%# -----Modal------ %>
+  <div class="modal fade" id="exampleModalindex" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create a new list</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(@list) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :photo, as: :file %>
+          <div class="modal-footer">
+          <%= f.submit "Create list", class:"btn btn-dark rounded" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
