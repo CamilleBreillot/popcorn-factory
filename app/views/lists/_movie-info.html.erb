@@ -23,10 +23,10 @@
     </div>
     <div class="modal-body">
       <%= simple_form_for ([@list, @bookmark]) do |f| %>
-        <%= f.input :movie, collection: Movie.all %>
-        <%= f.input :comment, label: movie.title  %>
+        <%= f.association :movie %>
+        <%= f.input :comment %>
         <div class="modal-footer">
-        <%= f.submit "Add moviffff", class:"btn btn-dark rounded" %>
+        <%= f.submit "Add movie", class:"btn btn-dark rounded" %>
         </div>
       <% end %>
     </div>

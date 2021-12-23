@@ -5,77 +5,61 @@
 </div>
 
 <div class="container">
-
-  <div class="section-grid-movies">
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-trip">
-      <%= image_tag bookmark.movie.poster_url %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= bookmark.movie.title %></h2>
-          <p><%= bookmark.movie.overview %></p>
-        </div>
-        <h2 class="card-trip-pricing"></h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-      </div>
-    <div class="delete-bookmark">
-      <%= link_to "Delete",
-            bookmark_path(bookmark),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-    </div>
-    </div>
-  <% end %>
-  </div>
-
-  <div class="section-bottom-button">
-    <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModal">
-      Add a new movie 🍿
-    </button>
-  </div>
-
-  <%# -----Modal------ %>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create a new list</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <%= simple_form_for ([@list, @bookmark]) do |f| %>
-          <%= f.association :movie %>
-          <%= f.input :comment %>
-          <div class="modal-footer">
-          <%= f.submit "Add movie", class:"btn btn-dark rounded" %>
+  <% if @list.bookmarks.length > 0 %>
+    <div class="section-grid-movies">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-trip">
+          <%= image_tag bookmark.movie.poster_url %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= bookmark.movie.title %></h2>
+              <p><%= bookmark.movie.overview %></p>
+            </div>
+            <h2 class="card-trip-pricing"></h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  </div>
-   <%# -----Modal end ------ %>
-
-  <div class="movies-section" data-controller="search-movies">
-
-    <div class="search-movies">
-      <%= form_with url: list_path(@list), method: :get, html: { class: 'mb-4', data: { search_movies_target: 'form' } } do |f| %>
-              <%= f.text_field :query,
-                                class: "form-control",
-                                placeholder: 'Type a movie title',
-                                value: params[:query],
-                                data: {
-                                  search_movies_target: 'input',
-                                  action: 'keyup->search-movies#update'
-                                  }
-                                %>
+          <div class="delete-bookmark">
+            <%= link_to bookmark_path(bookmark),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
-
-    <%= render 'movie-list', movies: @movies %>
-
+  <% else %>
+    <div class="section-grid-movies-if-no-movie">
+      <p>There is no movie yet in <strong><%= @list.name %></strong> list.</p>
+      <p>See below to add a movie now!</p>
+    </div>
+    <div class="section-bottom-button">
+    <button type="button" class="btn btn-ghost">
+      <i class="fas fa-arrow-down"></i>
+    </button>
   </div>
+  <% end %>
+
 
 </div>
+
+  <div class="movies-section" data-controller="search-movies">
+    <div class="container">
+      <h3>Add a new movie to <%= @list.name %> 🍿</h3>
+      <div class="search-movies">
+        <%= form_with url: list_path(@list), method: :get, html: { class: 'mb-4', data: { search_movies_target: 'form' } } do |f| %>
+                <%= f.text_field :query,
+                                  class: "form-control",
+                                  placeholder: 'Type a movie title',
+                                  value: params[:query],
+                                  data: {
+                                    search_movies_target: 'input',
+                                    action: 'keyup->search-movies#update'
+                                    }
+                                  %>
+        <% end %>
+      </div>
+
+      <%= render 'lists/movie-list', movies: @movies %>
+    </div>
+  </div>

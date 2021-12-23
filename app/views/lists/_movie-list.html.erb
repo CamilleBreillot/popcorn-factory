@@ -1,9 +1,11 @@
 <div class="list-movies" data-search-movies-target="list">
   <% if @movies.length > 0 %>
     <% @movies.each do |movie| %>
-      <%= render "movie-info", movie: movie %>
+      <%= render "lists/movie-info", movie: movie %>
     <% end %>
   <% else %>
-    <p>No movies found</p>
+    <div class="section-no-movies-found">
+      <p>No movies found, try again!</p>
+    </div>
   <% end %>
 </div>
