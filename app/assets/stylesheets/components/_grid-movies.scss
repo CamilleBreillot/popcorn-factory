@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
+  padding-bottom: 18px;
 }
 
 .movie-card {
@@ -10,6 +11,7 @@
   overflow: hidden;
   box-shadow: 2px 2px 8px 1px rgba(0, 0 , 0, 0.2);
   height: fit-content;
+  background-color: white;
 
   img {
     width: 100%;
@@ -63,4 +65,13 @@
       display: block;
     }
   }
+}
+
+.section-no-movies-found {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  color: white;
+  font-style: italic;
 }

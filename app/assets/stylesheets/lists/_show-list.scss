@@ -1,0 +1,33 @@
+.section-grid-movies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 38px;
+  margin-top: 38px;
+}
+
+.section-grid-movies-if-no-movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 36px;
+  margin-bottom: none;
+
+  p {
+    line-height: 6px;
+    color:#3A3535;
+  }
+}
+
+.movies-section {
+  background-color: rgb(58, 53, 53);
+  margin-top: 28px;
+
+  h3 {
+    color: white;
+    padding-top: 28px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+}
