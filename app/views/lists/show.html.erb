@@ -12,7 +12,11 @@
           <%= image_tag bookmark.movie.second_poster_url %>
           <div class="card-trip-infos">
             <div>
-              <h2><%= bookmark.movie.title %></h2>
+              <div class="card-trip-title">
+                <h2><%= bookmark.movie.title %> - </h2>
+                <p> <%= bookmark.movie.rating %></p>
+                <i class="fas fa-star"></i>
+              </div>
               <p><%= bookmark.movie.overview %></p>
             </div>
             <h2 class="card-trip-pricing"></h2>

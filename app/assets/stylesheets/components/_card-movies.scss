@@ -23,6 +23,22 @@
   margin: 0;
 }
 
+.card-trip-title {
+  display: flex;
+  align-items: center;
+}
+
+.card-trip-title p {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-trip-title i {
+  font-size: 12px;
+  margin-left: 4px;
+  color:goldenrod;
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;

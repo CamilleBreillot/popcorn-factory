@@ -11,9 +11,24 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 .card-category a {
   text-decoration: none;
   color: white;
+}
+
+.card-category img {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+}
+
+.card-category-user {
+  position: absolute;
+  left: 55px;
+  bottom: 0px;
+  font-size: 14px;
+  font-weight: lighter;
 }

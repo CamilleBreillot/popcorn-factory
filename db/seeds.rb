@@ -57,6 +57,7 @@ end
 
 puts "Creating users"
 camille = User.create(email: "camille@gmail.com", username: "Camille", password: "password")
+camille.photo.attach(io: File.open('app/assets/images/camille.jpeg'), filename: 'camille.jpeg')
 User.create(email: "pierrelouis@gmail.com", username: "Pierre-Louis", password: "password")
 
 puts "Creating Lists"
