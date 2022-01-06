@@ -9,7 +9,7 @@
     <div class="section-grid-movies">
       <% @list.bookmarks.each do |bookmark| %>
         <div class="card-trip">
-          <%= image_tag bookmark.movie.poster_url %>
+          <%= image_tag bookmark.movie.second_poster_url %>
           <div class="card-trip-infos">
             <div>
               <h2><%= bookmark.movie.title %></h2>
