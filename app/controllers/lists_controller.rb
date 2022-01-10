@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = policy_scope(List)
-    @lists = List.all
+    @lists = List.where(user: current_user)
     @list = List.new
   end
 
