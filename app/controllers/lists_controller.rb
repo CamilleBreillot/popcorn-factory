@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
+
   def index
+    @lists = policy_scope(List)
     @lists = List.all
     @list = List.new
   end
@@ -16,10 +18,12 @@ class ListsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: 'lists/movie-list', locals: { movies: @movies }, formats: [:html] }
     end
+    authorize @list
   end
 
   def new
     @list = List.new
+    authorize @list
   end
 
   def create
@@ -31,6 +35,7 @@ class ListsController < ApplicationController
     else
       render "lists/index"
     end
+    authorize @list
   end
 
   private

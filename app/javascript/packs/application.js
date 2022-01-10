@@ -37,11 +37,18 @@ function toggleOpen() {
   this.classList.toggle("open");
 }
 
+function toggleRemove() {
+  this.classList.remove("open");
+  this.classList.remove("open-active");
+}
+
 function toggleActive(e) {
   if (e.propertyName.includes("flex")) {
+    console.log(e.propertyName);
     this.classList.toggle("open-active");
   }
 }
 
-panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+panels.forEach(panel => panel.addEventListener('mouseenter', toggleOpen));
+panels.forEach(panel => panel.addEventListener('mouseleave', toggleRemove));
 panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
