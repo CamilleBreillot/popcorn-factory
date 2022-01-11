@@ -1,0 +1,23 @@
+.review-card {
+  display: flex;
+  border-bottom: rgb(221, 219, 219) 1px solid;
+  margin-top: 8px;
+}
+
+.review-card-user-infos {
+  margin-right: 18px;
+  p {
+    font-size: 12px;
+    line-height: 0px;
+  }
+  img {
+    margin-bottom: 8px;
+  }
+
+}
+
+.review-card-comment {
+  p {
+    color: rgb(102, 101, 101);
+  }
+}
