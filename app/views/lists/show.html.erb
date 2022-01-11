@@ -5,6 +5,13 @@
 </div>
 
 <div class="container">
+  <% if policy(@list).destroy? %>
+    <%= link_to list_path(@list),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+  <% end %>
   <% if @list.bookmarks.length > 0 %>
     <div class="section-grid-movies">
       <% @list.bookmarks.each do |bookmark| %>
