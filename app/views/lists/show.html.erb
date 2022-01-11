@@ -92,14 +92,14 @@
           <h3>Reviews on <%= @list.name %></h3>
           <% if @list.reviews != [] %>
             <% @list.reviews.each do |review| %>
-              <%= render "review", review: review %>
+              <%= render "lists/review", review: review %>
             <% end %>
         <% else %>
             <p><%= "No review from the PopCorn community yet !" %></p>
         <% end %>
         </div>
         <div class="formreview">
-          <%= render "form-review" %>
+          <%= render "lists/form-review" %>
         </div>
       </div>
     </div>
