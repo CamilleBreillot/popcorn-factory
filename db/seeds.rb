@@ -58,7 +58,8 @@ end
 puts "Creating users"
 camille = User.create(email: "camille@gmail.com", username: "Camille", password: "password")
 camille.photo.attach(io: File.open('app/assets/images/camille.jpeg'), filename: 'camille.jpeg')
-User.create(email: "pierrelouis@gmail.com", username: "Pierre-Louis", password: "password")
+pierrelouis = User.create(email: "pierrelouis@gmail.com", username: "Pierre-Louis", password: "password")
+pierrelouis.photo.attach(io: File.open('app/assets/images/pierrelouis.jpeg'), filename: 'pierrelouis.jpeg')
 
 puts "Creating Lists"
 list1 = List.create(name: "Classic movies", user_id: camille.id)
@@ -69,5 +70,10 @@ list3 = List.create(name: "Drama", user_id: camille.id)
 list3.photo.attach(io: File.open('app/assets/images/drama.jpeg'), filename: 'drama.jpeg')
 list4 = List.create(name: "Nineties", user_id: camille.id)
 list4.photo.attach(io: File.open('app/assets/images/nineties.jpeg'), filename: 'nineties.jpeg')
+
+puts "Creating Reviews"
+Review.create(comment: "Wonderful selection of classic movies", list_id: list1.id, user_id: pierrelouis.id)
+Review.create(comment: "Must seen, thanks for sharing", list_id: list1.id, user_id: pierrelouis.id)
+Review.create(comment: "I would add 'It Happened One Night' (from 1934)", list_id: list1.id, user_id: pierrelouis.id)
 
 puts "Seed created"
