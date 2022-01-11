@@ -56,6 +56,7 @@
       <div class="section-grid-movies-if-no-movie">
         <p>There is no movie yet in <strong><%= @list.name %></strong> list.</p>
       </div>
+      <hr class="solid">
     <% end %>
   </div>
   <% end %>
@@ -87,9 +88,18 @@
   <% else %>
     <div class="container">
       <div class="review-section">
-        <div class="comments">
+        <div class="list-reviews">
+          <h3>Reviews on <%= @list.name %></h3>
+          <% if @list.reviews != [] %>
+            <% @list.reviews.each do |review| %>
+              <%= render "review", review: review %>
+            <% end %>
+        <% else %>
+            <p><%= "No review from the PopCorn community yet !" %></p>
+        <% end %>
         </div>
         <div class="formreview">
+          <%= render "form-review" %>
         </div>
       </div>
     </div>

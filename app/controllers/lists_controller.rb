@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def show
     @bookmark = Bookmark.new
+    @review = Review.new
     @movies = Movie.all.limit(10)
     if params[:query].present?
       @movies = @movies.where('title ILIKE ?', "%#{params[:query]}%")

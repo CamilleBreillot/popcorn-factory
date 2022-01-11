@@ -1,0 +1,10 @@
+<div class="review-card">
+  <div class="review-card-user-infos">
+    <%= cl_image_tag "#{review.user.photo.key}.jpg" , class: "avatar-square", height: 40, crop: :thumb, gravity: :face %>
+    <p><strong><%= review.user.username %></strong></p>
+    <p><%= review.user.reviews.count %> reviews</p>
+  </div>
+  <div class="review-card-comment">
+   <p><%= review.comment %></p>
+  </div>
+</div>
