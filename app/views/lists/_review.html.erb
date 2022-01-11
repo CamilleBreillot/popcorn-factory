@@ -4,24 +4,26 @@
     <p><strong><%= review.user.username %></strong></p>
     <p><%= review.user.reviews.count %> reviews</p>
   </div>
-  <div class="review-card-comment">
-  <div>
-    <% review.rating.to_i.times do  %>
-      <span class="fas fa-star star-yellow"></span>
-    <% end %>
-    <% review.blank_stars.times do  %>
-      <span class="fas fa-star star-blank"></span>
-    <% end %>
-  </div>
-   <p><%= review.comment %></p>
-  </div>
-  <div>
-    <% if policy(review).destroy? %>
-      <%= link_to review_path(review),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } do %>
-                        <i class="far fa-trash-alt"></i>
-                      <% end %>
-    <% end %>
+  <div class="review-card-content">
+    <div class="review-card-comment">
+      <div>
+        <% review.rating.to_i.times do  %>
+          <span class="fas fa-star star-yellow"></span>
+        <% end %>
+        <% review.blank_stars.times do  %>
+          <span class="fas fa-star star-blank"></span>
+        <% end %>
+      </div>
+      <p><%= review.comment %></p>
+    </div>
+    <div class="review-card-deletelink">
+      <% if policy(review).destroy? %>
+        <%= link_to review_path(review),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } do %>
+                          <i class="far fa-trash-alt"></i>
+                        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

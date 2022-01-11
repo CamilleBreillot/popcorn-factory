@@ -60,6 +60,8 @@ camille = User.create(email: "camille@gmail.com", username: "Camille", password:
 camille.photo.attach(io: File.open('app/assets/images/camille.jpeg'), filename: 'camille.jpeg')
 pierrelouis = User.create(email: "pierrelouis@gmail.com", username: "Pierre-Louis", password: "password")
 pierrelouis.photo.attach(io: File.open('app/assets/images/pierrelouis.jpeg'), filename: 'pierrelouis.jpeg')
+john = User.create(email: "john@gmail.com", username: "John", password: "password")
+john.photo.attach(io: File.open('app/assets/images/john.jpeg'), filename: 'john.jpeg')
 
 puts "Creating Lists"
 list1 = List.create(name: "Classic movies", user_id: camille.id)
@@ -72,8 +74,8 @@ list4 = List.create(name: "Nineties", user_id: camille.id)
 list4.photo.attach(io: File.open('app/assets/images/nineties.jpeg'), filename: 'nineties.jpeg')
 
 puts "Creating Reviews"
-Review.create(comment: "Wonderful selection of classic movies", list_id: list1.id, user_id: pierrelouis.id)
-Review.create(comment: "Must seen, thanks for sharing", list_id: list1.id, user_id: pierrelouis.id)
-Review.create(comment: "I would add 'It Happened One Night' (from 1934)", list_id: list1.id, user_id: pierrelouis.id)
+Review.create(comment: "Wonderful selection of classic movies", rating: 4, list_id: list1.id, user_id: pierrelouis.id)
+Review.create(comment: "Must seen, thanks for sharing", rating: 5, list_id: list1.id, user_id: pierrelouis.id)
+Review.create(comment: "I would add 'It Happened One Night' (from 1934)", rating: 2, list_id: list1.id, user_id: john.id)
 
 puts "Seed created"
