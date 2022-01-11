@@ -52,3 +52,7 @@ function toggleActive(e) {
 panels.forEach(panel => panel.addEventListener('mouseenter', toggleOpen));
 panels.forEach(panel => panel.addEventListener('mouseleave', toggleRemove));
 panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+// plugin
+import { initStarRating } from '../plugins/init_star_rating';
+initStarRating();

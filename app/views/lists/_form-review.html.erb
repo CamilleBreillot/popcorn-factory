@@ -1,6 +1,6 @@
 <h4>Add your review</h4>
 <%= simple_form_for([@list, @review ]) do |f| %>
           <%= f.input :comment %>
-          <%= f.input :rating %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate #{@list.name} list" %>
           <%= f.submit "Create review", class:"btn-ghost" %>
 <% end %>
