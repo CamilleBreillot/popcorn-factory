@@ -1,17 +1,17 @@
 <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key %>);">
   <div class="container">
-    <h1><%= @list.name %></h1>
+    <div class="banner-show-link">
+      <%= link_to root_path do %>
+          <i class="far fa-arrow-alt-circle-left"></i>
+        <% end %>
+    </div>
+    <div class="banner-show-content">
+      <h1><%= @list.name %></h1>
+    </div>
   </div>
 </div>
 
 <div class="container">
-  <% if policy(@list).destroy? %>
-    <%= link_to list_path(@list),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } do %>
-                      <i class="far fa-trash-alt"></i>
-                    <% end %>
-  <% end %>
   <% if @list.bookmarks.length > 0 %>
     <div class="section-grid-movies">
       <% @list.bookmarks.each do |bookmark| %>
@@ -42,16 +42,25 @@
         </div>
       <% end %>
     </div>
+    <hr class="solid">
   <% else %>
     <% if current_user == @list.user %>
+      <div class="section-top-button">
+        <% if policy(@list).destroy? %>
+        <%= link_to "Delete list", list_path(@list),
+              method: :delete, class: "btn btn-ghost",
+              data: { confirm: "Are you sure?" }  %>
+        <% end %>
+      </div>
       <div class="section-grid-movies-if-no-movie">
         <p>There is no movie yet in <strong><%= @list.name %></strong> list.</p>
         <p>See below to add a movie now!</p>
       </div>
       <div class="section-bottom-button">
-      <button type="button" class="btn btn-ghost">
-        <i class="fas fa-arrow-down"></i>
-      </button>
+        <button type="button" class="btn btn-ghost">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+      </div>
     <% else %>
       <div class="section-grid-movies-if-no-movie">
         <p>There is no movie yet in <strong><%= @list.name %></strong> list.</p>

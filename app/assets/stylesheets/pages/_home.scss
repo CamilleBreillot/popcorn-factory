@@ -88,6 +88,12 @@
   margin-top: 18px;
 }
 
+.section-top-button {
+  display: flex;
+  justify-content: end;
+  margin-top: 18px;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
